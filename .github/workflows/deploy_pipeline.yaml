@@ -260,7 +260,7 @@ jobs:
         run: |
           echo "IMAGE_NAME=${{ env.IMAGE_NAME }}"
           echo "IMAGE_TAG=${{ env.IMAGE_TAG }}"
-          docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ secrets.ECR_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ${{ secrets.ECR_REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Push Docker Image to Amazon ECR
         env:
