@@ -27,7 +27,7 @@ jobs:
   # Build AWS infrastructure
   deploy_aws_infrastructure:
     name: Build AWS infrastructure
-    needs: configure_aws_credentials:
+    needs: configure_aws_credentials
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
