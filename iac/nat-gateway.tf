@@ -1,6 +1,5 @@
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az1 
 resource "aws_eip" "eip1" {
-  vpc = true
 
   tags = {
     Name = "${var.project_name}-${var.environment}-eip1"
@@ -9,7 +8,6 @@ resource "aws_eip" "eip1" {
 
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az2
 resource "aws_eip" "eip2" {
-  vpc = true
 
   tags = {
     Name = "${var.project_name}-${var.environment}-eip2"
