@@ -368,6 +368,4 @@ jobs:
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           label: ${{ needs.start_runner.outputs.label }}
           ec2-instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}
-        run: |
-          echo "MODE: ${{ inputs.mode }}"
-          echo "EC2_INSTANCE_ID: ${{ eeds.start_runner.outputs.ec2-instance-id }}"
+       
