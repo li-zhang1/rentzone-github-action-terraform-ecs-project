@@ -428,7 +428,7 @@ jobs:
       - create_td_revision
     if: needs.deploy_aws_infrastructure.outputs.terraform_action != 'destroy'
     runs-on: ubuntu-latest
-steps:
+    steps:
       - name: Update ECS Service
         env:
           ECS_CLUSTER_NAME: ${{ needs.deploy_aws_infrastructure.outputs.ecs_cluster_name }}
