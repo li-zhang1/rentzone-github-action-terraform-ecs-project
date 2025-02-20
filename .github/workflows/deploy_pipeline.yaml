@@ -361,11 +361,17 @@ jobs:
     if: needs.deploy_aws_infrastructure.outputs.terraform_action != 'destroy' && always() 
     runs-on: ubuntu-latest
     steps:
-      - name: Stop EC2 runner
-        uses: aws-actions/stop-ec2@v1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ env.Region }}
-          instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Stop EC2 runner
+        uses: machulav/ec2-github-runner@v2
+        with:
+          mode: stop
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          label: ${{ needs.start_runner.outputs.label }}
+          ec2-instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}
     
