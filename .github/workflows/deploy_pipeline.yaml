@@ -389,7 +389,7 @@ jobs:
       - name: Create new task definition revision
         env:
           ECS_FAMILY: ${{ needs.deploy_aws_infrastructure.outputs.task_definition_name }}
-          ECS_IMAGE: ${{ secrets.ECR_REGISTRY }}/${{ needs.deploy_aws_infrastructure.outputs.image_name }}:${{ needs.deploy_aws_infrastructure.outputs.image_tag }}
+          ECS_IMAGE: ${{ secrets.ECR_REGISTRY }}/${{ needs.deploy_aws_infrastructure.outputs.image_name }}:latest
         run: |
           # Get existing task definition
           TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition ${{ env.ECS_FAMILY }})
@@ -443,6 +443,6 @@ jobs:
           ECS_SERVICE_NAME: ${{ needs.deploy_aws_infrastructure.outputs.ecs_service_name }}
         run: |
           echo "Waiting for ECS service to stabilize..."
-          sleep 600  # Wait 10 minutes before checking again
+          sleep 240  # Wait 10 minutes before checking again
           aws ecs wait services-stable --cluster {{ env.ECS_CLUSTER_NAME }} --services {{ env.ECS_SERVICE_NAME}}
           
