@@ -343,6 +343,6 @@ jobs:
         working-directory: ./flyway-${{ env.FLYWAY_VERSION }}
         run: |
           flyway -url="${{ env.FLYWAY_URL }}?allowPublicKeyRetrieval=true&useSSL=false" \
-            -user=${{ env.FLYWAY_USER }} \
-            -password=${{ env.FLYWAY_PASSWORD }} \
-            -locations=${{ env.FLYWAY_LOCATION  }} migrate
+            -user="${{ env.FLYWAY_USER }}" \
+            -password="${{ env.FLYWAY_PASSWORD }}" \
+            -locations="${{ env.FLYWAY_LOCATION  }}" migrate
