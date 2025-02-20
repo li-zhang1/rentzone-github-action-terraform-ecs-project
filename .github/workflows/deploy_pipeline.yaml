@@ -407,6 +407,7 @@ jobs:
 
           # Set the new revision as an environment variable
           echo "NEW_TD_REVISION=$NEW_TD_REVISION" >> $GITHUB_ENV
+          echo "IMAGE=${{env.ECS_IMAGE}}"
 
     outputs:
       new_td_revision: ${{ env.NEW_TD_REVISION }}
