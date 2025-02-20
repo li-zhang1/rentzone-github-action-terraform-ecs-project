@@ -362,13 +362,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Stop EC2 runner
-        uses: machulav/ec2-github-runner@v2
+        uses: aws-actions/stop-ec2@v1
         with:
-          mode: stop
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          label: ${{ needs.start_runner.outputs.label }}
-          ec2-instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}
-      - name: Debug Inputs
-        run: |
-          echo "label: ${{ needs.start_runner.outputs.label }}"
-          echo "ec2-instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}"
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ env.Region }}
+          instance-id: ${{ needs.start_runner.outputs.ec2-instance-id }}
+    
