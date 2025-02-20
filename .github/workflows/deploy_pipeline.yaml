@@ -342,7 +342,7 @@ jobs:
           FLYWAY_LOCATION: filesystem:sql
         working-directory: ./flyway-${{ env.FLYWAY_VERSION }}
         run: |
-          flyway -url=${{ env.FLYWAY_URL }}?allowPublicKeyRetrieval=true&useSSL=false \
-                 -user=${{ env.FLYWAY_USER }} \
-                 -password=${{ env.FLYWAY_PASSWORD }} \
-                 -locations=${{ env.FLYWAY_LOCATION  }} migrate
+          flyway -url="${{ env.FLYWAY_URL }}?allowPublicKeyRetrieval=true&useSSL=false" \
+            -user=${{ env.FLYWAY_USER }} \
+            -password=${{ env.FLYWAY_PASSWORD }} \
+            -locations=${{ env.FLYWAY_LOCATION  }} migrate
