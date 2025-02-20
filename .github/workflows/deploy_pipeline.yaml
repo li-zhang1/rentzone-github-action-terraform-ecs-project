@@ -328,7 +328,6 @@ jobs:
 
       - name: Create a symbolic link to make Flyway accessible globally
         run: |
-          sudo rm /usr/local/bin/flyway
           sudo ln -sf `pwd`/flyway-${{ env.FLYWAY_VERSION }}/flyway /usr/local/bin 
 
       - name: Copy the sql folder into the Flyway sub-directory
